@@ -1,4 +1,4 @@
-export const TYPES = {
-	IStoreProvider: Symbol.for("IStoreProvider"),
-	IComponentProvider: Symbol.for("IComponentProvider"),
+export const PROVIDERS = {
+	Store: Symbol.for("StoreProvider"),
+	Component: Symbol.for("ComponentProvider"),
 };

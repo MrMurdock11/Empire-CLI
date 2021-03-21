@@ -3,8 +3,9 @@
 import chalk from "chalk";
 import figlet from "figlet";
 import application, { Option } from "commander";
-import { generateComponent } from "./actions/component.actions";
 import { generateStore, initStore } from "./actions/store.actions";
+import { COMMANDS } from "./di/types/command.types";
+import { createCommand } from "./factories/command.factory";
 
 const bootstrap = () => {
 	const PACKAGE_JSON = require(`${__dirname}/../package.json`);
@@ -25,21 +26,29 @@ const bootstrap = () => {
 		console.log(`${chalk.bold.green("GitHub")}:\t ${chalk.cyan(HOMEPAGE)}`);
 	});
 
-	const option = new Option(
-		"-r, --redux <type>",
-		"Generate component for connect to redux store."
-	);
-
 	application
 		.command("component <name>")
 		.alias("c")
 		.option("-C, --no-css-module", "Generate component without css-module.")
-		.addOption(option.choices(["state", "dispatch", "both"]))
-		.action(generateComponent);
+		.addOption(
+			new Option(
+				"-r, --redux <type>",
+				"Generate component for connect to redux store."
+			).choices(["state", "dispatch", "both"])
+		)
+		.action(createCommand(COMMANDS.GenerateComponent).execute);
 
-	application.command("store <name>").alias("s").action(generateStore);
+	application
+		.command("store <name>")
+		.alias("s")
+		.action(createCommand(COMMANDS.GenerateStore).execute);
 
-	application.command("new store").alias("ns").action(initStore);
+	application.command("new-store").alias("ns").action(initStore);
+
+	application
+		.command("new <name>")
+		.alias("n")
+		.action(createCommand(COMMANDS.InitProject).execute);
 
 	if (!process.argv.slice(2).length) {
 		application.outputHelp();

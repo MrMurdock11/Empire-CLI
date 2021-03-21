@@ -1,5 +1,6 @@
-export const TYPES = {
-	IComponentService: Symbol.for("IComponentService"),
-	IStoreService: Symbol.for("IStoreService"),
-	IFileSystemService: Symbol.for("IFileSystemService"),
+export const SERVICES = {
+	Component: Symbol.for("ComponentService"),
+	Store: Symbol.for("StoreService"),
+	FileSystem: Symbol.for("FileSystemService"),
+	Project: Symbol.for("ProjectService"),
 };

@@ -1,8 +1,8 @@
 import DIContainer from "../di/inversify.config";
-import { TYPES } from "../di/types/service.types";
+import { SERVICES } from "../di/types/service.types";
 import { IStoreService } from "../services/interfaces/store-service.interface";
 
-const storeService = DIContainer.get<IStoreService>(TYPES.IStoreService);
+const storeService = DIContainer.get<IStoreService>(SERVICES.Store);
 
 /**
  * Генерирует хранилище и сохраняет в выбранной директории.

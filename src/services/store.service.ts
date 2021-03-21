@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import { injectable, inject } from "inversify";
 import { IStoreService } from "./interfaces/store-service.interface";
-import { TYPES as TYPES_PROVIDER } from "../di/types/provider.types";
-import { TYPES as TYPES_SERVICE } from "../di/types/service.types";
+import { PROVIDERS } from "../di/types/provider.types";
+import { SERVICES } from "../di/types/service.types";
 import { IStoreProvider } from "../providers/interfaces/store.provider.interface";
 import { StoreBuilder } from "../builders/store.builder";
 import { StoreDirector } from "../directors/store.director";
@@ -18,9 +18,9 @@ import { IFileSystemService } from "./interfaces/file-system-service.interface";
 @injectable()
 export class StoreService implements IStoreService {
 	constructor(
-		@inject(TYPES_PROVIDER.IStoreProvider)
+		@inject(PROVIDERS.Store)
 		private readonly provider: IStoreProvider,
-		@inject(TYPES_SERVICE.IFileSystemService)
+		@inject(SERVICES.FileSystem)
 		private readonly fileSystemService: IFileSystemService
 	) {}
 

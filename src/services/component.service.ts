@@ -6,8 +6,8 @@ import {
 	GenerateOptions,
 	IComponentService,
 } from "./interfaces/component-service.interface";
-import { TYPES as TYPES_PROVIDER } from "../di/types/provider.types";
-import { TYPES as TYPES_SERVICE } from "../di/types/service.types";
+import { PROVIDERS } from "../di/types/provider.types";
+import { SERVICES } from "../di/types/service.types";
 import { IFileSystemService } from "./interfaces/file-system-service.interface";
 import { IComponentProvider } from "../providers/interfaces/component.provider.interface";
 
@@ -20,9 +20,9 @@ import { IComponentProvider } from "../providers/interfaces/component.provider.i
 @injectable()
 export class ComponentService implements IComponentService {
 	constructor(
-		@inject(TYPES_SERVICE.IFileSystemService)
+		@inject(SERVICES.FileSystem)
 		private readonly fileSystemService: IFileSystemService,
-		@inject(TYPES_PROVIDER.IComponentProvider)
+		@inject(PROVIDERS.Component)
 		private readonly provider: IComponentProvider
 	) {}
 

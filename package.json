@@ -29,6 +29,7 @@
 	"homepage": "https://github.com/MrMurdock11/empire-cli#readme",
 	"dependencies": {
 		"adm-zip": "^0.4.14",
+		"autobind-decorator": "^2.4.0",
 		"chalk": "^3.0.0",
 		"clear": "^0.1.0",
 		"commander": "^7.1.0",
